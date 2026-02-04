@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Font Size Controller</title>
+</head>
+<body>
+  <h2>Dynamic Font Size Controller</h2>
+
+  <p id="text">This text will change size.</p>
+  <button id="plus">A+</button>
+  <button id="minus">A-</button>
+
+  <script>
+    const text = document.getElementById("text");
+    let size = 16;
+
+    document.getElementById("plus").addEventListener("click", () => {
+      size += 2;
+      text.style.fontSize = size + "px";
+    });
+
+    document.getElementById("minus").addEventListener("click", () => {
+      size -= 2;
+      if (size < 10) size = 10;
+      text.style.fontSize = size + "px";
+    });
+  </script>
+</body>
+</html>

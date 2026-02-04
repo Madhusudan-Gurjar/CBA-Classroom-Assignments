@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Menu</title>
+  <style>
+    a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: black;
+      margin: 5px;
+      border-radius: 5px;
+    }
+    a.active {
+      background: orange;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Highlight Active Menu</h2>
+
+  <nav>
+    <a href="#" class="menu active">Home</a>
+    <a href="#" class="menu">About</a>
+    <a href="#" class="menu">Services</a>
+    <a href="#" class="menu">Contact</a>
+  </nav>
+
+  <script>
+    const menus = document.querySelectorAll(".menu");
+
+    menus.forEach((m) => {
+      m.addEventListener("click", () => {
+        menus.forEach((x) => x.classList.remove("active"));
+        m.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

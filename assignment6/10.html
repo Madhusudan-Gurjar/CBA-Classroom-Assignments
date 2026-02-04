@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live User Search</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      max-width: 100%;
+    }
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+    li {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Live User Search</h2>
+
+  <input id="search" type="text" placeholder="Search user name..." />
+  <ul id="userList"></ul>
+
+  <script>
+    const search = document.getElementById("search");
+    const userList = document.getElementById("userList");
+
+    async function fetchUsers() {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      if (!res.ok) throw new Error("Failed to fetch users");
+      return await res.json();
+    }
+
+    search.addEventListener("keyup", async () => {
+      const text = search.value.toLowerCase();
+      userList.innerHTML = "";
+
+      if (text === "") return;
+
+      try {
+        const users = await fetchUsers();
+
+        const filteredUsers = users.filter((user) =>
+          user.name.toLowerCase().includes(text)
+        );
+
+        if (filteredUsers.length === 0) {
+          userList.innerHTML = "<li>No user found</li>";
+          return;
+        }
+
+        filteredUsers.forEach((user) => {
+          const li = document.createElement("li");
+          li.innerText = user.name;
+          userList.appendChild(li);
+        });
+      } catch (error) {
+        userList.innerHTML = "<li>Failed to load data</li>";
+      }
+    });
+  </script>
+
+</body>
+</html>

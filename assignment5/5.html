@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+</head>
+<body>
+  <h2>Real-Time Character Counter</h2>
+
+  <textarea id="txt" rows="4" cols="30" placeholder="Type here..."></textarea>
+  <p>Characters: <span id="count">0</span></p>
+
+  <script>
+    const txt = document.getElementById("txt");
+    const count = document.getElementById("count");
+
+    txt.addEventListener("keyup", () => {
+      count.innerHTML = txt.value.length;
+    });
+  </script>
+</body>
+</html>

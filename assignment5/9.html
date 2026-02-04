@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Check</title>
+</head>
+<body>
+  <h2>Simple Login Check</h2>
+
+  <input id="user" type="text" placeholder="Username"><br><br>
+  <input id="pass" type="password" placeholder="Password"><br><br>
+  <button id="login">Login</button>
+
+  <p id="msg"></p>
+
+  <script>
+    const login = document.getElementById("login");
+    const msg = document.getElementById("msg");
+
+    login.addEventListener("click", () => {
+      const user = document.getElementById("user").value.trim();
+      const pass = document.getElementById("pass").value.trim();
+
+      if (user === "admin" && pass === "1234") {
+        msg.innerText = " Login Successful!";
+        msg.style.color = "green";
+      } else {
+        msg.innerText = " Invalid Credentials!";
+        msg.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>

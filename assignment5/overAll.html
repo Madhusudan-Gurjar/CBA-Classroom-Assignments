@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM & Event Handling Practice</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+    input, textarea, button {
+      padding: 8px;
+      margin: 5px 0;
+    }
+    nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      color: black;
+    }
+    nav a.active {
+      background: orange;
+      color: white;
+    }
+    body.dark {
+      background: black;
+      color: white;
+    }
+    body.dark input, body.dark textarea {
+      background: #222;
+      color: white;
+      border: 1px solid #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>DOM & Event Handling Practice Exercises</h1>
+
+  <!-- 1) Live Text Changer -->
+  <div class="box">
+    <h2>1) Live Text Changer</h2>
+    <input id="liveInput" type="text" placeholder="Type something..." />
+    <p id="livePara">Your text will appear here...</p>
+  </div>
+
+  <!-- 2) Theme Switcher -->
+  <div class="box">
+    <h2>2) Theme Switcher</h2>
+    <button id="themeBtn">Toggle Theme</button>
+  </div>
+
+  <!-- 3) Show / Hide Password -->
+  <div class="box">
+    <h2>3) Show / Hide Password</h2>
+    <input id="passField" type="password" placeholder="Enter password" />
+    <button id="togglePass">Show</button>
+  </div>
+
+  <!-- 4) Form Validation -->
+  <div class="box">
+    <h2>4) Form Validation on Submit</h2>
+    <form id="myForm">
+      <input id="name" type="text" placeholder="Name" /> <br />
+      <input id="email" type="email" placeholder="Email" /> <br />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="msg"></p>
+  </div>
+
+  <!-- 5) Character Counter -->
+  <div class="box">
+    <h2>5) Real-Time Character Counter</h2>
+    <textarea id="textBox" rows="4" cols="30" placeholder="Type here..."></textarea>
+    <p>Characters: <span id="count">0</span></p>
+  </div>
+
+  <!-- 6) Highlight Active Menu -->
+  <div class="box">
+    <h2>6) Highlight Active Menu</h2>
+    <nav>
+      <a href="#" class="menu active">Home</a>
+      <a href="#" class="menu">About</a>
+      <a href="#" class="menu">Services</a>
+      <a href="#" class="menu">Contact</a>
+    </nav>
+  </div>
+
+  <!-- 7) Add Items to a List -->
+  <div class="box">
+    <h2>7) Add Items to a List</h2>
+    <input id="itemInput" type="text" placeholder="Enter item..." />
+    <button id="addBtn">Add</button>
+    <ul id="itemList"></ul>
+  </div>
+
+  <!-- 8) Change Image on Hover -->
+  <div class="box">
+    <h2>8) Change Image on Hover</h2>
+    <img id="myImg" src="https://via.placeholder.com/200" width="200" />
+  </div>
+
+  <!-- 9) Simple Login Check -->
+  <div class="box">
+    <h2>9) Simple Login Check</h2>
+    <input id="username" type="text" placeholder="Username" /> <br />
+    <input id="password" type="password" placeholder="Password" /> <br />
+    <button id="loginBtn">Login</button>
+    <p id="loginMsg"></p>
+  </div>
+
+  <!-- 10) Font Size Controller -->
+  <div class="box">
+    <h2>10) Dynamic Font Size Controller</h2>
+    <p id="textPara">This is sample text to change font size.</p>
+    <button id="inc">A+</button>
+    <button id="dec">A-</button>
+  </div>
+
+  <script>
+    // 1) Live Text Changer
+    const liveInput = document.getElementById("liveInput");
+    const livePara = document.getElementById("livePara");
+
+    liveInput.addEventListener("keyup", () => {
+      livePara.innerText = liveInput.value;
+    });
+
+    // 2) Theme Switcher
+    const themeBtn = document.querySelector("#themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+
+    // 3) Show / Hide Password
+    const passField = document.getElementById("passField");
+    const togglePass = document.getElementById("togglePass");
+
+    togglePass.addEventListener("click", () => {
+      if (passField.type === "password") {
+        passField.setAttribute("type", "text");
+        togglePass.innerText = "Hide";
+      } else {
+        passField.setAttribute("type", "password");
+        togglePass.innerText = "Show";
+      }
+    });
+
+    // 4) Form Validation
+    const myForm = document.getElementById("myForm");
+    const msg = document.getElementById("msg");
+
+    myForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (name === "" || email === "") {
+        msg.innerText = "❌ All fields are required!";
+        msg.style.color = "red";
+      } else {
+        msg.innerText = "✅ Form submitted successfully!";
+        msg.style.color = "green";
+      }
+    });
+
+    // 5) Character Counter
+    const textBox = document.getElementById("textBox");
+    const count = document.getElementById("count");
+
+    textBox.addEventListener("keyup", () => {
+      count.innerText = textBox.value.length;
+    });
+
+    // 6) Highlight Active Menu
+    const links = document.querySelectorAll(".menu");
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        links.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+      });
+    });
+
+    // 7) Add Items
+    const itemInput = document.getElementById("itemInput");
+    const addBtn = document.getElementById("addBtn");
+    const itemList = document.getElementById("itemList");
+
+    addBtn.addEventListener("click", () => {
+      const value = itemInput.value.trim();
+
+      if (value !== "") {
+        const li = document.createElement("li");
+        li.innerText = value;
+        itemList.appendChild(li);
+        itemInput.value = "";
+      }
+    });
+
+    // 8) Change Image on Hover
+    const myImg = document.getElementById("myImg");
+
+    myImg.addEventListener("mouseover", () => {
+      myImg.setAttribute("src", "https://via.placeholder.com/200/ff0000");
+    });
+
+    myImg.addEventListener("mouseout", () => {
+      myImg.setAttribute("src", "https://via.placeholder.com/200");
+    });
+
+    // 9) Simple Login Check
+    const loginBtn = document.getElementById("loginBtn");
+    const loginMsg = document.getElementById("loginMsg");
+
+    loginBtn.addEventListener("click", () => {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (user === "admin" && pass === "1234") {
+        loginMsg.innerText = "✅ Login Successful!";
+        loginMsg.style.color = "green";
+      } else {
+        loginMsg.innerText = "❌ Invalid Username or Password!";
+        loginMsg.style.color = "red";
+      }
+    });
+
+    // 10) Font Size Controller
+    const textPara = document.getElementById("textPara");
+    let fontSize = 16;
+
+    document.getElementById("inc").addEventListener("click", () => {
+      fontSize += 2;
+      textPara.style.fontSize = fontSize + "px";
+    });
+
+    document.getElementById("dec").addEventListener("click", () => {
+      fontSize -= 2;
+      if (fontSize < 10) fontSize = 10;
+      textPara.style.fontSize = fontSize + "px";
+    });
+  </script>
+
+</body>
+</html>

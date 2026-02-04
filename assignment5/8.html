@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Hover</title>
+</head>
+<body>
+  <h2>Change Image on Hover</h2>
+
+  <img id="img" src="sp.png" width="200">
+
+  <script>
+    const img = document.getElementById("img");
+
+    img.addEventListener("mouseover", () => {
+      img.src = "sp1.jpg";
+      img.width="400";
+    });
+
+    img.addEventListener("mouseout", () => {
+      img.src = "sp.png";
+      img.width="200";
+    });
+  </script>
+</body>
+</html>
