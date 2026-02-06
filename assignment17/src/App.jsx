@@ -1,6 +1,6 @@
 
-import Welcome from "./Components/Welcome.jsx";
-import Student from "./Components/Student.jsx";
+import Welcome from "./Components/Welcome";
+import Student from "./Components/Student";
 import Counter from "./Components/Counter.jsx";
 import ToggleMessage from "./Components/ToggleMessage.jsx";
 import Timer from "./Components/Timer.jsx";
