@@ -16,7 +16,7 @@ function App() {
       <button onClick={() => setLab(2)}>Lab 2</button><br /><br />
       <button onClick={() => setLab(3)}>Lab 3</button><br /><br />
       <button onClick={() => setLab(4)}>Lab 4</button><br /><br />
-      <button onClick={() => setLab(5)}>Lab 5</button>
+      <button onClick={() => setLab(5)}>Lab 5</button><br />
 
       <hr />
 
