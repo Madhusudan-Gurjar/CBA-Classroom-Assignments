@@ -1,0 +1,35 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #222;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.sidebar a.active {
+  color: yellow;
+  font-weight: bold;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f4f4f4;
+}
