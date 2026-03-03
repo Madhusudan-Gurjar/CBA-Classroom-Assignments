@@ -3,8 +3,6 @@
    PART 1: JOINS
    ============================================================ */
 
-
-
 USE sakila;
 
 /* 1. List all customers along with the staff member who handled their payments. */
