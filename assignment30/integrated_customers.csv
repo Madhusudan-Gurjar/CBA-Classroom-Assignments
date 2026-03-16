@@ -1,0 +1,5 @@
+customer_id,name,city,email,registration_source
+1,Rahul,PUNE,rahul@email.com,CRM + WEBSITE
+2,Priya,MUMBAI,priya@email.com,CRM + WEBSITE
+3,Amit,DELHI,amit@email.com,CRM + WEBSITE
+4,Neha,BANGALORE,neha@email.com,CRM + WEBSITE
